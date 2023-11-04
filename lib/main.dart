@@ -187,7 +187,7 @@ class _ChatAppState extends State<ChatApp> {
       ),
       floatingActionButton: FloatingActionButton.extended(
   onPressed: () {
-    Navigator.push(context, MaterialPageRoute(builder: (context)=>querypage()));
+    Navigator.push(context, MaterialPageRoute(builder: (context)=>QueryPage()));
   },
   icon: Icon(Icons.question_answer),
   label: Text("Enter Query!"),
