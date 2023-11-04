@@ -12,23 +12,21 @@ class QueryPage extends StatefulWidget {
 class _QueryPageState extends State<QueryPage> {
   SpeechToText _speechToText = SpeechToText();
   bool _speechEnabled = false;
-  String _words='';
+  String _words = '';
   TextEditingController _controller = TextEditingController();
 
   @override
-  void initState()
-  {
+  void initState() {
     super.initState();
     _initSpeech();
   }
 
-  void _initSpeech() async 
-  {
+  void _initSpeech() async {
     _speechEnabled = await _speechToText.initialize();
     setState(() {});
   }
-  
-  void _stopListening() async{
+
+  void _stopListening() async {
     await _speechToText.stop();
     setState(() {});
   }
@@ -38,8 +36,7 @@ class _QueryPageState extends State<QueryPage> {
     setState(() {});
   }
 
-  void _onSpeechResult(SpeechRecognitionResult result)
-  {
+  void _onSpeechResult(SpeechRecognitionResult result) {
     _controller.text = result.recognizedWords;
     setState(() {
       _words = result.recognizedWords;
@@ -54,38 +51,38 @@ class _QueryPageState extends State<QueryPage> {
         appBar: AppBar(
           title: const Text("Geobot Query!"),
         ),
-        body: Center(
-          child:Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children:  [
-               Padding(
+        body: Align(
+          alignment: Alignment.bottomCenter,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end, // Align content at the bottom
+            children: [
+              Padding(
                 padding: const EdgeInsets.all(16),
-                child:TextField(
+                child: TextField(
                   controller: _controller,
-                 decoration: InputDecoration(
-                   border: const OutlineInputBorder(),
-                   suffix: IconButton(
-                onPressed: _speechToText.isListening ? _stopListening : _startListening,
-                 icon:
-                  Icon(_speechToText.isListening? Icons.mic_off : Icons.mic),
-                  iconSize: 30,
-                  color:const Color.fromRGBO(226, 152, 5, 1),
-
-                 ),
-                   hintText: 'Enter your Query here',
-                )),
+                  decoration: InputDecoration(
+                    border: const OutlineInputBorder(),
+                    suffix: IconButton(
+                      onPressed:
+                          _speechToText.isListening ? _stopListening : _startListening,
+                      icon: Icon(
+                        _speechToText.isListening ? Icons.mic_off : Icons.mic,
+                      ),
+                      iconSize: 30,
+                      color: const Color.fromRGBO(226, 152, 5, 1),
+                    ),
+                    hintText: 'Enter your Query here',
+                  ),
+                ),
               ),
               Text(
-              _speechToText.isListening
-               ? _words
-               : _speechEnabled
-                ? 'Press the microphone to start'
-                : 'Speech Not available'
-                ),
+                    _speechToText.isListening
+                      ? _words
+                      : '',
+                  ),
             ],
-
-            )
           ),
+        ),
       ),
     );
   }
