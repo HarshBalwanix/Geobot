@@ -69,7 +69,9 @@ class _QueryPageState extends State<QueryPage> {
   }
 
   Future<void> _sendMessage(String message) async {
-    final query = message;
+    final query = message.trim();
+    if(query.isNotEmpty)
+    {
     final serverUrl = 'https://geobot-backend.onrender.com/api/categorize'; // Replace with your server's URL
 
     try {
@@ -111,6 +113,7 @@ class _QueryPageState extends State<QueryPage> {
         _messages.add(ChatMessage(text: 'Failed to send the query. Try again later.', isUserMessage: false));
       });
     }
+  }
   }
 
   @override
