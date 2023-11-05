@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:geobot_flutter/query.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'query.dart';
 import 'sahara.dart';
 
 void main() {
@@ -11,7 +10,7 @@ void main() {
     theme: ThemeData(
       primarySwatch: Colors.orange,
     ),
-    home: ChatApp(),
+    home: const ChatApp(),
   ));
 }
 
@@ -50,22 +49,22 @@ class _ChatAppState extends State<ChatApp> {
 
   Widget _BScard(){
     return Card(
+            margin: const EdgeInsets.only(left: 20, right: 20, top: 20),
             child: Image.network("https://www.isro.gov.in/media_isro/image/index/GaganyaanTVD1/GaganyaanTVD1.jpg.webp",
               fit: BoxFit.fill,
               width: 150.0,
               height: 150.0,
             ),
-            margin: EdgeInsets.only(left: 20, right: 20, top: 20),
           );
   }
 
   Widget _BSDetails(){
-    return SizedBox(
+    return const SizedBox(
             width: double.infinity,
             height: 100.0, // Adjust the height to decrease the distance
             child: Card(
               child: Padding(
-                padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
+                padding: EdgeInsets.only(left: 20, right: 20, top: 20),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -98,54 +97,54 @@ class _ChatAppState extends State<ChatApp> {
         title: Text("Geobot"),
         centerTitle: true,
       ),
-      drawer: new Drawer(
-       child: new ListView(
+      drawer:  Drawer(
+       child:  ListView(
         children: [
-                 UserAccountsDrawerHeader(
+                 const UserAccountsDrawerHeader(
                    accountName: Text("Hi SAHARA!!", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 23),),
                    accountEmail: null,
                    currentAccountPicture: null,
            ),
-             Divider(
-                color: Colors.orange, // Change the color to your preferred color
+             const Divider(
+                color:  Colors.orange, // Change the color to your preferred color
                 thickness: 2, // Adjust the thickness as needed
                 // indent: 20, // Adjust the starting point from the left
                 // endIndent: 20, // Adjust the ending point from the right
               ),
-           new ListTile(
-            title: new Text("ISRO Site!",style: TextStyle( fontSize: 17),),
-            leading: new Image.asset('assets/logo.png', width: 35, height: 35), // Adjust width and height as needed
+            ListTile(
+            title:  const Text("ISRO Site!",style: TextStyle( fontSize: 17),),
+            leading: Image.asset('assets/logo.png', width: 35, height: 35), // Adjust width and height as needed
             onTap: (){
               _launchURL(1);
             },
            ),
-           Divider(
+           const Divider(
                 color: Colors.lightBlue, // Change the color to your preferred color
                 thickness: 2, // Adjust the thickness as needed
                 indent: 20, // Adjust the starting point from the left
                 endIndent: 20, // Adjust the ending point from the right
               ),
-           new ListTile(
-            title: new Text("Locate on map",style: TextStyle( fontSize: 17),),
-            leading: new Icon(Icons.maps_home_work_rounded),
+           ListTile(
+            title: const Text("Locate on map",style: TextStyle( fontSize: 17),),
+            leading:const Icon(Icons.maps_home_work_rounded),
             onTap: (){
               _launchURL(2);
             },
            ),
-           Divider(
+           const Divider(
                 color: Colors.lightBlue, // Change the color to your preferred color
                 thickness: 2, // Adjust the thickness as needed
                 indent: 20, // Adjust the starting point from the left
                 endIndent: 20, // Adjust the ending point from the right
               ),
-           new ListTile(
-            title: new Text("About SAHARA",style: TextStyle( fontSize: 17),),
-            leading: new Icon(Icons.question_mark),
+           ListTile(
+            title: const Text("About SAHARA",style: TextStyle( fontSize: 17),),
+            leading: const Icon(Icons.question_mark),
             onTap: (){
               Navigator.push(context, MaterialPageRoute(builder: (context)=>saharapage()));
             },
            ),
-           Divider(
+           const Divider(
                 color: Colors.lightBlue, // Change the color to your preferred color
                 thickness: 2, // Adjust the thickness as needed
                 indent: 20, // Adjust the starting point from the left
@@ -155,7 +154,7 @@ class _ChatAppState extends State<ChatApp> {
        ), 
       ),
       body: ListView(
-        padding: EdgeInsets.only(top: 40.0),
+        padding: const EdgeInsets.only(top: 40.0),
         children: [
           Center(
             child: CarouselSlider(
@@ -180,7 +179,7 @@ class _ChatAppState extends State<ChatApp> {
               )).toList(),
             ),
           ),
-         new Divider(height: 50.0),
+         const Divider(height: 50.0),
          _BScard(),
          _BSDetails(),
         ],
@@ -189,8 +188,8 @@ class _ChatAppState extends State<ChatApp> {
   onPressed: () {
     Navigator.push(context, MaterialPageRoute(builder: (context)=>QueryPage()));
   },
-  icon: Icon(Icons.question_answer),
-  label: Text("Enter Query!"),
+  icon: const Icon(Icons.question_answer),
+  label: const Text("Enter Query!"),
   tooltip: 'Connect to Geobot',
   backgroundColor: Colors.lightBlue,
 ),
