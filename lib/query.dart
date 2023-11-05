@@ -86,8 +86,8 @@ class _QueryPageState extends State<QueryPage> {
 
       if (formattedResponse.isNotEmpty) {
         setState(() {
-          _messages.add(ChatMessage(text: 'You: $query', isUserMessage: true));
-          _messages.add(ChatMessage(text: 'Geobot: $formattedResponse', isUserMessage: false));
+          _messages.add(ChatMessage(text: ' $query', isUserMessage: true));
+          _messages.add(ChatMessage(text: ' $formattedResponse', isUserMessage: false));
         });
       }
     } else {
