@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:speech_to_text/speech_recognition_result.dart';
 import 'package:speech_to_text/speech_to_text.dart';
@@ -49,7 +50,7 @@ class _QueryPageState extends State<QueryPage> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: const Text("Geobot Query!"),
+          title: const Text("Geobot Qwery!"),
         ),
         body: Align(
           alignment: Alignment.bottomCenter,
@@ -75,11 +76,11 @@ class _QueryPageState extends State<QueryPage> {
                   ),
                 ),
               ),
-              Text(
-                    _speechToText.isListening
-                      ? _words
-                      : '',
-                  ),
+              // Text(
+              //       _speechToText.isListening
+              //         ? _words
+              //         : '',
+              //     ),
             ],
           ),
         ),
