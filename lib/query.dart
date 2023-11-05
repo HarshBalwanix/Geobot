@@ -4,6 +4,10 @@ import 'package:speech_to_text/speech_to_text.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+void main() {
+  runApp(QueryPage());
+}
+
 class QueryPage extends StatefulWidget {
   QueryPage({Key? key}) : super(key: key);
 
@@ -46,9 +50,27 @@ class _QueryPageState extends State<QueryPage> {
     });
   }
 
+  String formatServerResponse(Map<String, dynamic> response) {
+    List<String> formattedEntities = [];
+
+    if (response['city_entities'] != null && response['city_entities'].isNotEmpty) {
+      formattedEntities.add("Cities: ${response['city_entities'].join(', ')}");
+    }
+
+    if (response['country_entities'] != null && response['country_entities'].isNotEmpty) {
+      formattedEntities.add("Countries: ${response['country_entities'].join(', ')}");
+    }
+
+    if (response['state_entities'] != null && response['state_entities'].isNotEmpty) {
+      formattedEntities.add("States: ${response['state_entities'].join(', ')}");
+    }
+
+    return formattedEntities.join('\n');
+  }
+
   Future<void> _sendMessage(String message) async {
     final query = message;
-    const serverUrl = 'https://geobot-backend.onrender.com/api/categorize'; // Replace with your server's URL
+    final serverUrl = 'https://geobot-backend.onrender.com/api/categorize'; // Replace with your server's URL
 
     final response = await http.post(
       Uri.parse(serverUrl),
@@ -59,14 +81,16 @@ class _QueryPageState extends State<QueryPage> {
     );
 
     if (response.statusCode == 200) {
-      final serverResponse = response.body;
-      // Add the user's message and the server's response to the chat
-      setState(() {
-        _messages.add(ChatMessage(text: _query, isUserMessage: true));
-        _messages.add(ChatMessage(text: serverResponse, isUserMessage: false));
-      });
+      final serverResponse = json.decode(response.body);
+      final formattedResponse = formatServerResponse(serverResponse);
+
+      if (formattedResponse.isNotEmpty) {
+        setState(() {
+          _messages.add(ChatMessage(text: 'You: $query', isUserMessage: true));
+          _messages.add(ChatMessage(text: 'Geobot: $formattedResponse', isUserMessage: false));
+        });
+      }
     } else {
-      // Handle server errors or other cases
       print('Failed to send the query to the server. Status code: ${response.statusCode}');
     }
   }
@@ -89,7 +113,30 @@ class _QueryPageState extends State<QueryPage> {
                   return ListTile(
                     title: Align(
                       alignment: message.isUserMessage ? Alignment.centerRight : Alignment.centerLeft,
-                      child: Text(message.text),
+                      child: Container(
+                        padding: EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          color: message.isUserMessage ? Colors.orange : Colors.lightBlue,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: message.isUserMessage ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              message.isUserMessage ? 'You' : 'Geobot',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text(
+                              message.text,
+                              style: TextStyle(
+                                fontSize: 16,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   );
                 },
@@ -98,14 +145,14 @@ class _QueryPageState extends State<QueryPage> {
             Padding(
               padding: const EdgeInsets.all(16),
               child: Container(
-                padding: EdgeInsets.only(bottom: 10),  // Add padding to the bottom
+                padding: EdgeInsets.only(bottom: 10),
                 child: Row(
                   children: [
                     Expanded(
                       child: TextField(
                         controller: _controller,
                         decoration: InputDecoration(
-                          border: const OutlineInputBorder(),
+                          border: OutlineInputBorder(),
                           hintText: 'Enter your Query here',
                           prefixIcon: IconButton(
                             onPressed: _speechToText.isListening ? _stopListening : _startListening,
@@ -115,7 +162,7 @@ class _QueryPageState extends State<QueryPage> {
                         ),
                       ),
                     ),
-                    ClipOval(  // Wrap the IconButton with ClipOval to make it round
+                    ClipOval(
                       child: Material(
                         color: const Color.fromRGBO(226, 152, 5, 1),
                         child: IconButton(
