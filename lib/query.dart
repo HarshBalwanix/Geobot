@@ -92,6 +92,7 @@ class _QueryPageState extends State<QueryPage> {
       } else {
         // If the response is empty, add a message saying that no place name was found
         setState(() {
+          _messages.add(ChatMessage(text: ' $query', isUserMessage: true));
           _messages.add(ChatMessage(text: 'Sorry, we can\'t find any place name', isUserMessage: false));
         });
       }
