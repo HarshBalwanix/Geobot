@@ -5,22 +5,22 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 void main() {
-  runApp(QueryPage());
+  runApp(const QueryPage());
 }
 
 class QueryPage extends StatefulWidget {
-  QueryPage({Key? key}) : super(key: key);
+  const QueryPage({Key? key}) : super(key: key);
 
   @override
   _QueryPageState createState() => _QueryPageState();
 }
 
 class _QueryPageState extends State<QueryPage> {
-  SpeechToText _speechToText = SpeechToText();
+  final SpeechToText _speechToText = SpeechToText();
   bool _speechEnabled = false;
   String _query = '';
-  TextEditingController _controller = TextEditingController();
-  List<ChatMessage> _messages = [];
+  final TextEditingController _controller = TextEditingController();
+  final List<ChatMessage> _messages = [];
 
   @override
   void initState() {
@@ -72,7 +72,7 @@ class _QueryPageState extends State<QueryPage> {
     final query = message.trim();
     if(query.isNotEmpty)
     {
-    final serverUrl = 'https://geobot-backend.onrender.com/api/categorize'; // Replace with your server's URL
+    const serverUrl = 'https://geobot-backend.onrender.com/api/categorize'; // Replace with your server's URL
 
     try {
       final response = await http.post(
@@ -135,7 +135,7 @@ class _QueryPageState extends State<QueryPage> {
                     title: Align(
                       alignment: message.isUserMessage ? Alignment.centerRight : Alignment.centerLeft,
                       child: Container(
-                        padding: EdgeInsets.all(8),
+                        padding: const EdgeInsets.all(8),
                         decoration: BoxDecoration(
                           color: message.isUserMessage ? Colors.orange : Colors.lightBlue,
                           borderRadius: BorderRadius.circular(10),
@@ -145,13 +145,13 @@ class _QueryPageState extends State<QueryPage> {
                           children: [
                             Text(
                               message.isUserMessage ? 'You' : 'Geobot',
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
                             Text(
                               message.text,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 16,
                               ),
                             ),
@@ -166,14 +166,14 @@ class _QueryPageState extends State<QueryPage> {
             Padding(
               padding: const EdgeInsets.all(16),
               child: Container(
-                padding: EdgeInsets.only(bottom: 10),
+                padding: const EdgeInsets.only(bottom: 10),
                 child: Row(
                   children: [
                     Expanded(
                       child: TextField(
                         controller: _controller,
                         decoration: InputDecoration(
-                          border: OutlineInputBorder(),
+                          border: const OutlineInputBorder(),
                           hintText: 'Enter your Query here',
                           prefixIcon: IconButton(
                             onPressed: _speechToText.isListening ? _stopListening : _startListening,
@@ -192,7 +192,7 @@ class _QueryPageState extends State<QueryPage> {
                             _controller.clear();
                             _sendMessage(userMessage);
                           },
-                          icon: Icon(Icons.send),
+                          icon: const Icon(Icons.send),
                           color: Colors.white,
                         ),
                       ),
