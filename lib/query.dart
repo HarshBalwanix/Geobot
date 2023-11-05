@@ -54,15 +54,15 @@ class _QueryPageState extends State<QueryPage> {
     List<String> formattedEntities = [];
 
     if (response['city_entities'] != null && response['city_entities'].isNotEmpty) {
-      formattedEntities.add("Cities: ${response['city_entities'].join(', ')}");
+      formattedEntities.add("Cities:\n ${response['city_entities'].join(', ')}");
     }
 
     if (response['country_entities'] != null && response['country_entities'].isNotEmpty) {
-      formattedEntities.add("Countries: ${response['country_entities'].join(', ')}");
+      formattedEntities.add("Countries:\n ${response['country_entities'].join(', ')}");
     }
 
     if (response['state_entities'] != null && response['state_entities'].isNotEmpty) {
-      formattedEntities.add("States: ${response['state_entities'].join(', ')}");
+      formattedEntities.add("States:\n ${response['state_entities'].join(', ')}");
     }
 
     return formattedEntities.join('\n');
@@ -72,32 +72,44 @@ class _QueryPageState extends State<QueryPage> {
     final query = message;
     final serverUrl = 'https://geobot-backend.onrender.com/api/categorize'; // Replace with your server's URL
 
-    final response = await http.post(
-      Uri.parse(serverUrl),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: jsonEncode({'text': query}),
-    );
+    try {
+      final response = await http.post(
+        Uri.parse(serverUrl),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: jsonEncode({'text': query}),
+      );
 
-    if (response.statusCode == 200) {
-      final serverResponse = json.decode(response.body);
-      final formattedResponse = formatServerResponse(serverResponse);
+      if (response.statusCode == 200) {
+        final serverResponse = json.decode(response.body);
+        final formattedResponse = formatServerResponse(serverResponse);
 
-      if (formattedResponse.isNotEmpty) {
-        setState(() {
-          _messages.add(ChatMessage(text: ' $query', isUserMessage: true));
-          _messages.add(ChatMessage(text: ' $formattedResponse', isUserMessage: false));
-        });
+        if (formattedResponse.isNotEmpty) {
+          setState(() {
+            _messages.add(ChatMessage(text: ' $query', isUserMessage: true));
+            _messages.add(ChatMessage(text: ' $formattedResponse', isUserMessage: false));
+          });
+        } else {
+          // If the response is empty, add a message saying that no place name was found
+          setState(() {
+            _messages.add(ChatMessage(text: ' $query', isUserMessage: true));
+            _messages.add(ChatMessage(text: 'Sorry, we can\'t find any place name', isUserMessage: false));
+          });
+        }
       } else {
-        // If the response is empty, add a message saying that no place name was found
+        print('Failed to send the query to the server. Status code: ${response.statusCode}');
+        // Add a message indicating that the server is not responding
         setState(() {
-          _messages.add(ChatMessage(text: ' $query', isUserMessage: true));
-          _messages.add(ChatMessage(text: 'Sorry, we can\'t find any place name', isUserMessage: false));
+          _messages.add(ChatMessage(text: 'Server is not responding. Try again later.', isUserMessage: false));
         });
       }
-    } else {
-      print('Failed to send the query to the server. Status code: ${response.statusCode}');
+    } catch (e) {
+      print('Error sending request: $e');
+      // Add a message indicating that the request failed
+      setState(() {
+        _messages.add(ChatMessage(text: 'Failed to send the query. Try again later.', isUserMessage: false));
+      });
     }
   }
 
