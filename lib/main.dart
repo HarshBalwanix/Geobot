@@ -50,7 +50,7 @@ class _ChatAppState extends State<ChatApp> {
   Widget _BScard(){
     return Card(
             margin: const EdgeInsets.only(left: 20, right: 20, top: 20),
-            child: Image.network("https://www.isro.gov.in/media_isro/image/index/GaganyaanTVD1/GaganyaanTVD1.jpg.webp",
+            child: Image.asset("assets/isromain.jpeg",
               fit: BoxFit.fill,
               width: 150.0,
               height: 150.0,
