@@ -28,24 +28,40 @@ GeoBot Flutter is a mobile application built with Flutter that provides informat
 ## Screenshots
 
 - **User-Friendly UI**->
-  <p align="center">
-  <img src="https://github.com/HarshBalwanix/Geobot/assets/91670912/23227d6a-ca67-44c9-936d-3a66423efd2d" width="400" alt="Screenshot">
+<div style="display: flex; justify-content: space-between;">
+  <div style="flex: 1;">
+    <p align="center">
+      <img src="https://github.com/HarshBalwanix/Geobot/assets/91670912/4afea036-5e56-47e2-949f-b51c27efedb7" width="300" alt="Left Screenshot">
+    </p>
+  </div>
+  <div style="flex: 1;">
+    <p align="center">
+      <img src="https://github.com/HarshBalwanix/Geobot/assets/91670912/0f77c2f4-7d3d-4ba6-ae93-acb04752cea0" width="200" alt="Right Screenshot">
+    </p>
+  </div>
+</div>
 </p>
-<!-- ![mainpage](https://github.com/HarshBalwanix/Geobot/assets/91670912/23227d6a-ca67-44c9-936d-3a66423efd2d) -->
 
-![slider](https://github.com/HarshBalwanix/Geobot/assets/91670912/ec7f9d20-6da5-4b8d-bb52-1abd9a088b2c)
 - **ISRO Integration**->
-  ![isrosite](https://github.com/HarshBalwanix/Geobot/assets/91670912/9a6a7c0d-518c-4494-a13f-10d61555c96d)
-
+  <img src="https://github.com/HarshBalwanix/Geobot/assets/91670912/9a6a7c0d-518c-4494-a13f-10d61555c96d" width="200" alt="Screenshot">
 - **Interactive Maps** ->
-![maps](https://github.com/HarshBalwanix/Geobot/assets/91670912/dd747f75-2dd7-40ca-bc03-49d81fb3c67b)
+<img src="https://github.com/HarshBalwanix/Geobot/assets/91670912/dd747f75-2dd7-40ca-bc03-49d81fb3c67b" width="200" alt="Screenshot">
 
 - **Geospatial Place Identification** ->
-  ![botmainpage](https://github.com/HarshBalwanix/Geobot/assets/91670912/1ad69be7-e8e2-4bbf-a2af-46c295f48494)
+<div style="display: flex; justify-content: space-between;">
+  <div style="flex: 1;">
+    <p align="center">
+      <img src="https://github.com/HarshBalwanix/Geobot/assets/91670912/1ad69be7-e8e2-4bbf-a2af-46c295f48494" width="200" alt="Left Screenshot">
+    </p>
+  </div>
+  <div style="flex: 1;">
+    <p align="center">
+      <img src="https://github.com/HarshBalwanix/Geobot/assets/91670912/1fd2f4a2-4c98-4b69-be3e-e1793feee884" width="200" alt="Right Screenshot">
+    </p>
+  </div>
+</div>
 
-  ![result](https://github.com/HarshBalwanix/Geobot/assets/91670912/1fd2f4a2-4c98-4b69-be3e-e1793feee884)
-
-  - **Demo Video** ->
+- **Demo Video** ->
 
 https://github.com/HarshBalwanix/Geobot/assets/91670912/fc63f5a9-ae84-422f-a852-fb65487c571e
 
