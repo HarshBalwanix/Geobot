@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:geobot_flutter/query.dart';
+import 'package:Geobot/query.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'sahara.dart';
@@ -94,7 +94,7 @@ class _ChatAppState extends State<ChatApp> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Geobot"),
+        title: const Text("Geobot"),
         centerTitle: true,
       ),
       drawer:  Drawer(

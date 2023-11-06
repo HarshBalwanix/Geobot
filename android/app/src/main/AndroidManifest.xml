@@ -5,7 +5,7 @@
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
     
     <application
-        android:label="geobot_flutter"
+        android:label="Geobot"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
 
