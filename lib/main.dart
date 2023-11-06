@@ -41,10 +41,10 @@ void _launchURL(int value) async {
 }
 class _ChatAppState extends State<ChatApp> {
   final List<String> imageList = [
-    "https://www.isro.gov.in/media_isro/image/index/Highlights/Achievements_Space.jpg.webp",
-    "https://www.isro.gov.in/media_isro/image/index/Highlights/mahaquizbanner.jpg",
-    "https://www.isro.gov.in/media_isro/image/akam-home-banner-eng_medium.jpg.webp",
-    "https://www.isro.gov.in/media_isro/image/index/PSLVC56/PSLVC56_PostImg.jpg.webp",
+    "https://pbs.twimg.com/profile_images/1171839413879365632/NaEa4KKY_400x400.jpg",
+    "https://pbs.twimg.com/media/EKW29PSUwAA6-T_?format=jpg&name=4096x4096",
+    "https://pbs.twimg.com/media/EAAPXZ9UYAIgZCh?format=jpg&name=900x900",
+    "https://pbs.twimg.com/profile_banners/1533051649681305603/1654343880/1500x500",
   ];
 
   Widget _BScard(){
