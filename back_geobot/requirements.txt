@@ -1,0 +1,6 @@
+
+flask
+spacy
+gunicorn
+typing-extensions
+waitress
