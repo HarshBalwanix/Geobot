@@ -1,6 +1,6 @@
 # GeoBot Flutter
 
-GeoBot Flutter is a mobile application built with Flutter that provides information about various geospatial topics. It includes features such as [list some of the key features here].
+GeoBot Flutter is a mobile application built with Flutter that provides information about various geospatial topics. It includes features listed below.
 
 ## Table of Contents
 
