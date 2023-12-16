@@ -27,20 +27,12 @@ GeoBot Flutter is a mobile application built with Flutter that provides informat
 
 ## Screenshots
 
-- **User-Friendly UI**->
-<div style="display: flex; justify-content: space-between;">
-  <div style="flex: 1;">
-    <p align="center">
-      <img src="https://github.com/HarshBalwanix/Geobot/assets/91670912/4afea036-5e56-47e2-949f-b51c27efedb7" width="300" alt="Left Screenshot">
-    </p>
-  </div>
-  <div style="flex: 1;">
-    <p align="center">
-      <img src="https://github.com/HarshBalwanix/Geobot/assets/91670912/0f77c2f4-7d3d-4ba6-ae93-acb04752cea0" width="200" alt="Right Screenshot">
-    </p>
-  </div>
-</div>
-</p>
+ ### User-Friendly UI 
+ <img src="https://github.com/HarshBalwanix/Geobot/assets/91670912/4afea036-5e56-47e2-949f-b51c27efedb7" width="200">
+   <img src="https://github.com/HarshBalwanix/Geobot/assets/91670912/0f77c2f4-7d3d-4ba6-ae93-acb04752cea0" width="200">
+    
+      <img src="" width="200" >
+   
 
 - **ISRO Integration**->
   <img src="https://github.com/HarshBalwanix/Geobot/assets/91670912/9a6a7c0d-518c-4494-a13f-10d61555c96d" width="200" alt="Screenshot">
