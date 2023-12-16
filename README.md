@@ -49,7 +49,7 @@ GeoBot Flutter is a mobile application built with Flutter that provides informat
   <img src="https://github.com/HarshBalwanix/Geobot/assets/91670912/1fd2f4a2-4c98-4b69-be3e-e1793feee884" width="200">
 
 
-- **Demo Video** ->
+## Demo Video
 
 https://github.com/HarshBalwanix/Geobot/assets/91670912/fc63f5a9-ae84-422f-a852-fb65487c571e
 
